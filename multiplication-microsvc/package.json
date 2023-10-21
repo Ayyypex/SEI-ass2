@@ -1,0 +1,9 @@
+{
+    "name": "multiplication-microsvc",
+    "version": "1.0.0",
+    "description": "Microservice for multiplication operation",
+    "dependencies": {
+      "express": "^4.17.1"
+    }
+  }
+  

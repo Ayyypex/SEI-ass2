@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multiplication-microsvc-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multiplication-microsvc
+  template:
+    metadata:
+      labels:
+        app: multiplication-microsvc
+    spec:
+      containers:
+      - name: multiplication-microsvc-container
+        image: multiplication-microsvc-img
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3001

@@ -1,0 +1,9 @@
+{
+    "name": "addition-microsvc",
+    "version": "1.0.0",
+    "description": "Microservice for addition operation",
+    "dependencies": {
+      "express": "^4.17.1"
+    }
+  }
+  

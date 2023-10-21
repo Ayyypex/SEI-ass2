@@ -1,0 +1,9 @@
+{
+    "name": "subtraction-microsvc",
+    "version": "1.0.0",
+    "description": "Microservice for subtraction operation",
+    "dependencies": {
+      "express": "^4.17.1"
+    }
+  }
+  
