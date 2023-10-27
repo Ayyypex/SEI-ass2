@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rand-num-microsvc-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rand-num-microsvc
+  template:
+    metadata:
+      labels:
+        app: rand-num-microsvc
+    spec:
+      containers:
+      - name: rand-num-microsvc-container
+        image: rand-num-microsvc-img
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3004

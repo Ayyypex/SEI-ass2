@@ -1,0 +1,9 @@
+{
+    "name": "rand-num-microsvc",
+    "version": "1.0.0",
+    "description": "Microservice that returns a random number between 1 and 100",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^4.18.2"
+    }
+}
