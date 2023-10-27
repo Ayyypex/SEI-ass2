@@ -1,0 +1,9 @@
+{
+    "name": "rand-string-microsvc",
+    "version": "1.0.0",
+    "description": "Microservice that returns a random string, from 5 options",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^4.18.2"
+    }
+}
