@@ -1,0 +1,10 @@
+{
+    "name": "timestamp-microsvc",
+    "version": "1.0.0",
+    "description": "Microservice that returns a timestamp",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^4.18.2",
+        "moment-timezone": "^0.5.43"
+    }
+}
