@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const httpProxy = require('http-proxy');
 const apiProxy = httpProxy.createProxyServer();
-// const port = 3000;
+const port = 3000;
 
 let minikube_ip = "192.168.49.2:";
 
@@ -30,6 +30,6 @@ app.get("/api/add", function(req, res) {
 //   res.json({ result });
 // });
 
-// app.listen(port, () => {
-//   console.log(`Gateway is listening on port ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Gateway is listening on port ${port}`);
+});
