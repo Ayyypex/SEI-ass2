@@ -4,6 +4,7 @@ const port = 3001;
 
 app.get('/multiply', (req, res) => {
   const { num1, num2 } = req.query;
+  console.log(`Called with ${num1} and ${num2}`)
   if (!num1 || !num2) {
     return res.status(400).json({ error: 'Both num1 and num2 parameters are required.' });
   }
