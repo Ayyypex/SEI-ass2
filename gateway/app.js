@@ -15,8 +15,10 @@ let microservices = {
   timestamp: { url: minikube_ip+"", secret:"timestamp-secret" },
 }
 
-app.get("/api/add", function(req, res) {
-  apiProxy.web(req, res, {target:microservices[addition].url})
+app.get("/api/add", (req, res) => {
+  console.log(microservices)
+  apiProxy.web(req, res, {target:microservices[addition].url});
+  res.status(200).send("OK!");
 });
 
 
