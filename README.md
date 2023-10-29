@@ -21,6 +21,12 @@ minikube status
 docker build -t <microservice>-img .
 minikube image load <microservice>-img
 ```
+Alternatively, if you installed docker with apt-get and not snap, you can run the following
+```shell
+eval $(minikube docker-env)
+```
+This makes that instance of the terminal use the docker from within minikube and so when you build the image, it is built with the minikube docker and automatically usable by it.
+There are also Makefiles to assist in building images in each folder
 
 ### 5. Deploy the microservices
 ```shell
@@ -53,6 +59,32 @@ curl -X GET "http://<Minikube_IP>:<Node_Port>/add?num1=5&num2=3"
     ```
     In this case, Node_Port is 30484.
 
+### Checking logs of pods
+1. View all pods running
+    ```shell
+    kubectl get pods
+    ```
+    Should look something like:
+    ```shell
+    subtraction-microsvc-deployment-6b95c96cc7-dll9p      1/1     Running   0          5m31s
+    ```
+
+2. View logs
+    ```shell
+    kubectl logs -f <pod name>
+    ```
+    where pod name would be `subtraction-microsvc-deployment-6b95c96cc7-dll9p` in this instance
+
+### Updating image
+1. When an image is rebuilt in minikube, it will replace the existing one.
+2. If there is already a deployment applied, the pod can simply be deleted and it will be rebuilt automatically with the new image.
+    ```shell
+    kubectl delete pod <pod name>
+    # Alternatively you can delete all pods
+    kubectl delete pod --all
+    # You can also force them to exit
+    kubectl delete pod --all --force        
+    ``` 
 
 ### Removing a docker image from minikube
 1. SSH into minikube:
