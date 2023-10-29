@@ -3,6 +3,7 @@ const moment = require('moment-timezone');
 const app = express();
 
 app.get('/timestamp', (req, res) => {
+    console.log("Generating timestamp...");
     const adelaideTime = moment().tz('Australia/Adelaide');
     const formattedTime = adelaideTime.format('dddd, MMMM Do YYYY, h:mm:ss a');
     res.json({ timestamp: formattedTime });
