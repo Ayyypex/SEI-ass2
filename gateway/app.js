@@ -42,11 +42,32 @@ app.get("/api", async (req, res) => {
 	
 	// Complete addition and check if it worked
 	var result = await add(num1, num2);
-	if (result == null) return res.status(500).send("Server error");
+	console.log(result)
+	if (result == null) return res.status(500).send("Server error with addition microservice");
 
 	// Generate random number and multiply result by it
-	var rand = await rand();
-	res.send(addition.toString());
+	var r = await rand();
+	console.log(r)
+	if (r == null) return res.status(500).send("Server error with random number microservice");
+	result = await multiply(result, r);
+	console.log(result)
+	if (result == null) return res.status(500).send("Server error with multipliction microservice");
+
+	// Subract one from result
+	result = await subtract(result, "1");
+	console.log(result)
+	if (result == null) return res.status(500).send("Server error with subtraction microservice");
+	
+	// Return a message with time stamp, the final result and a random string
+	var time = await timestamp();
+	console.log(time)
+	if (time == null) return res.status(500).send("Server error with timestamp microservice");
+	var string = await rand_string();
+	console.log(string)
+	if (string == null) return res.status(500).send("Server error with random string microservice");
+	
+	var reply = `${time}\nYour result was ${result}.\n${string}`
+	res.send(reply);
 });
 
 app.listen(port, () => {
@@ -76,9 +97,9 @@ async function multiply(x, y) {
 }
 
 // Function to call subtraction microservice
-async function subtract() {
+async function subtract(x, y) {
 	try {
-		const response = await axios.get(microservices.subtraction+`/subtract?num1=${x}&num2=${y}`;
+		const response = await axios.get(microservices.subtraction+`/subtract?num1=${x}&num2=${y}`);
 		return response.data["result"];
 	} catch (error) {
 		console.error(error);
@@ -90,7 +111,7 @@ async function subtract() {
 async function rand() {
 	try {
 		const response = await axios.get(microservices.rand_num+"/rand");
-		return response.data["result"];
+		return response.data;
 	} catch (error) {
 		console.error(error);
 		return null;
@@ -100,8 +121,8 @@ async function rand() {
 // Function to call random string microservice
 async function rand_string() {
 	try {
-		const response = await axios.get(microservices.rand_string+"/rand");
-		return response.data["result"];
+		const response = await axios.get(microservices.rand_string+"/randString");
+		return response.data;
 	} catch (error) {
 		console.error(error);
 		return null;
@@ -109,10 +130,10 @@ async function rand_string() {
 }
 
 // Function to call timestamp microservice
-async function time() {
+async function timestamp() {
 	try {
 		const response = await axios.get(microservices.timestamp+"/timestamp");
-		return response.data["result"];
+		return response.data["timestamp"];
 	} catch (error) {
 		console.error(error);
 		return null;
