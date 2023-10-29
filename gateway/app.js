@@ -16,9 +16,9 @@ let microservices = {
 }
 
 app.get("/api/add", (req, res) => {
-  console.log(microservices.addition.url)
+  // console.log(microservices.addition.url)
   apiProxy.web(req, res, {target:microservices.addition.url});
-  res.status(200).send("OK!");
+  // res.status(200).send("OK!");
 });
 
 
