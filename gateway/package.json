@@ -1,9 +1,9 @@
 {
-    "name": "gateway",
-    "version": "1.0.0",
-    "description": "Gateway for microservice",
-    "dependencies": {
-      "express": "^4.17.1"
-    }
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "Gateway for microservice",
+  "dependencies": {
+      "express": "^4.17.1",
+      "http-proxy": "^1.18.1"
   }
-  
+}
