@@ -4,10 +4,10 @@ const httpProxy = require('http-proxy');
 const apiProxy = httpProxy.createProxyServer();
 const port = 3000;
 
-let minikube_ip = "192.168.49.2:";
+let minikube_ip = "192.168.58.2:";
 
 let microservices = {
-  addition: { url: minikube_ip+"30202", secret:"addition-secret" },
+  addition: { url: minikube_ip+"31410", secret:"addition-secret" },
   multipliction: { url: minikube_ip+"", secret:"mulipliction-secret" },
   subtraction: { url: minikube_ip+"", secret:"subtraction-secret" },
   rand_num: { url: minikube_ip+"", secret:"rand-num-secret" },
@@ -16,7 +16,7 @@ let microservices = {
 }
 
 app.get("/api/add", (req, res) => {
-  console.log(microservices)
+  console.log(microservices.addition.url)
   apiProxy.web(req, res, {target:microservices.addition.url});
   res.status(200).send("OK!");
 });
