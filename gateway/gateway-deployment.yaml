@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: addition-microsvc-deployment
+  name: gateway-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: addition-microsvc
+      app: gateway
   template:
     metadata:
       labels:
-        app: addition-microsvc
+        app: gateway
     spec:
       containers:
-      - name: addition-microsvc-container
-        image: addition-microsvc-img
+      - name: gateway-container
+        image: gateway-img
         imagePullPolicy: Never
         ports:
         - containerPort: 3000

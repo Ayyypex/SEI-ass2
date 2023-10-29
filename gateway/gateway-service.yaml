@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: addition-microsvc-service
+  name: gateway-service
 spec:
   selector:
-    app: addition-microsvc
+    app: gateway
   ports:
   - protocol: TCP
     port: 80
