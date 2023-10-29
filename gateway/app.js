@@ -4,21 +4,32 @@ const httpProxy = require('http-proxy');
 const apiProxy = httpProxy.createProxyServer();
 const port = 3000;
 
-let minikube_ip = "192.168.58.2:";
-
 let microservices = {
-  addition: { url: minikube_ip+"31410/add", secret:"addition-secret" },
-  multipliction: { url: minikube_ip+"", secret:"mulipliction-secret" },
-  subtraction: { url: minikube_ip+"", secret:"subtraction-secret" },
-  rand_num: { url: minikube_ip+"", secret:"rand-num-secret" },
-  rand_string: { url: minikube_ip+"", secret:"rand-string-secret" },
-  timestamp: { url: minikube_ip+"", secret:"timestamp-secret" },
+  addition: "http://addition-microsvc-service",
+  multipliction: "http://multiplication-microsvc-service",
+  subtraction: "http://subtraction-microsvc-service",
+  rand_num: "http://rand-num-microsvc-service",
+  rand_string: "http://rand-string-microsvc-service",
+  timestamp: "http://timestamp-microsvc-service",
 }
 
-app.get("/api/add", (req, res) => {
-  console.log(microservices.addition.url)
-  apiProxy.web(req, res, {target:microservices.addition.url});
-  // res.status(200).send("OK!");
+app.get("/add", (req, res) => {
+  apiProxy.web(req, res, {target:microservices.addition});
+});
+app.get("/multiply", (req, res) => {
+  apiProxy.web(req, res, {target:microservices.multipliction});
+});
+app.get("/subtract", (req, res) => {
+  apiProxy.web(req, res, {target:microservices.subtraction});
+});
+app.get("/rand", (req, res) => {
+  apiProxy.web(req, res, {target:microservices.rand_num});
+});
+app.get("/randString", (req, res) => {
+  apiProxy.web(req, res, {target:microservices.rand_string});
+});
+app.get("/timestamp", (req, res) => {
+  apiProxy.web(req, res, {target:microservices.timestamp});
 });
 
 
