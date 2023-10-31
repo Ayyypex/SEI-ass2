@@ -1,6 +1,5 @@
 import subprocess
 import requests
-import json
 
 responses = ["Thankyou for using our Microservice/Gateway system!", "This string was chosen randomly", 
     "I love software engineering!", "Here is your final result", 
@@ -23,12 +22,15 @@ def test_request():
         assert(responseString in responses)
         return 0
     except:
-        print("Addition Test: reqest failed")
+        print("RandString Test: request failed")
         return 1
 
 def main():
     result = 0
-    result += test_request()
+    # Run tests multiple times due to the random nature
+    # of the service.
+    for _ in range(0,15):
+        result += test_request()
 
     if result == 0:
         print("All tests passed.")
