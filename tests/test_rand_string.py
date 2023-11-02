@@ -1,17 +1,9 @@
-import subprocess
 import requests
+from helpers import get_ip, get_port
 
 responses = ["Thankyou for using our Microservice/Gateway system!", "This string was chosen randomly", 
     "I love software engineering!", "Here is your final result", 
     "This system contains a gateway and 6 other microservices"]
-
-def get_ip():
-    cmd = ["minikube", "ip"]
-    return subprocess.check_output(cmd).decode('utf-8').strip('\n')
-
-def get_port():
-    cmd = ["kubectl", "get", "service", "gateway-service", '--output=jsonpath="{.spec.ports[0].nodePort}"']
-    return subprocess.check_output(cmd).decode('utf-8').strip('"')
 
 def test_request():
     try:

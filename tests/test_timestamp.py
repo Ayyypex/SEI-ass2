@@ -1,15 +1,7 @@
-import subprocess
 import requests
 import time
 from datetime import datetime
-
-def get_ip():
-    cmd = ["minikube", "ip"]
-    return subprocess.check_output(cmd).decode('utf-8').strip('\n')
-
-def get_port():
-    cmd = ["kubectl", "get", "service", "gateway-service", '--output=jsonpath="{.spec.ports[0].nodePort}"']
-    return subprocess.check_output(cmd).decode('utf-8').strip('"')
+from helpers import get_ip, get_port
 
 def test_request():
     try:
