@@ -9,7 +9,7 @@ app.get('/multiply', (req, res) => {
     return res.status(400).json({ error: 'Both num1 and num2 parameters are required.' });
   }
 
-  var regex = /^[0-9]+$/;
+  var regex = /^[-+]?[0-9]*\.?[0-9]+$/;
   if (!num1.match(regex)) {
     return res.status(400).json({ error: 'num1 must be a number' });
   }
