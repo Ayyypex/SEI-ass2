@@ -50,28 +50,28 @@ app.get("/api", async (req, res) => {
 	
 	// Complete addition and check if it worked
 	var result = await add(num1, num2);
-	console.log(result)
+	console.log("Addition: " + result)
 	if (result == null) return res.status(500).send("Server error with addition microservice");
 
 	// Generate random number and multiply result by it
 	var r = await rand();
-	console.log(r)
+	console.log("Random: " + r)
 	if (r == null) return res.status(500).send("Server error with random number microservice");
 	result = await multiply(result, r);
-	console.log(result)
+	console.log("Multiplication: " + result)
 	if (result == null) return res.status(500).send("Server error with multipliction microservice");
 
 	// Subract one from result
 	result = await subtract(result, "1");
-	console.log(result)
+	console.log("Subtraction: " + result)
 	if (result == null) return res.status(500).send("Server error with subtraction microservice");
 	
 	// Return a message with time stamp, the final result and a random string
 	var time = await timestamp();
-	console.log(time)
+	console.log("Timestamp: " + time)
 	if (time == null) return res.status(500).send("Server error with timestamp microservice");
 	var string = await rand_string();
-	console.log(string)
+	console.log("Random String: " + string)
 	if (string == null) return res.status(500).send("Server error with random string microservice");
 	
 	var reply = `${time}\nYour result was ${result}.\n${string}`
