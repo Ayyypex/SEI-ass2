@@ -1,0 +1,16 @@
+import test_addition, test_multiplication, test_api, test_timestamp, test_subtraction, test_rand_num, test_rand_string
+
+print("Testing Addition Microsvc")
+test_addition.main()
+print("Testing Multiplication Microsvc")
+test_multiplication.main()
+print("Testing Subtraction Microsvc")
+test_subtraction.main()
+print("Testing Timestamp Microsvc")
+test_timestamp.main()
+print("Testing Rand Num Microsvc")
+test_rand_num.main()
+print("Testing Rand String Microsvc")
+test_rand_string.main()
+print("Testing API Endpoint")
+test_api.main()
